@@ -114,8 +114,9 @@ jobs:
       
     - name: 'Copy code for webjob'
       run: |
+        mkdir -p app_data/jobs/continuous/rallywebjob
         cd Application
-        cp -R build ../app_data/jobs/continuous/rallywebjob
+        cp -R build/* ../app_data/jobs/continuous/rallywebjob/
         
     - name: Kick off the webjob with powershell
       if: github.event.action == 'inline'
