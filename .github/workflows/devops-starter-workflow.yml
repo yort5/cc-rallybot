@@ -85,6 +85,7 @@ jobs:
     - name: Unzipping Build artifact
       run: |
         unzip -qq ./buildartifacts/app_data.zip -d .
+        unzip -qq ./buildartifacts/Application.zip -d .
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
