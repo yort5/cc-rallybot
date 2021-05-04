@@ -80,8 +80,6 @@ jobs:
     - name: Unzipping Build artifact
       run: |
         unzip -qq ./buildartifacts/Application.zip -d .
-        cd Application
-        cp -R ccrallybot ../app_data/jobs/continuous/rallywebjob
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
