@@ -40,11 +40,11 @@ jobs:
         cd Application
         dotnet restore
         dotnet build --configuration Release
-        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build'
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/app_data/jobs/continuous/rallywebjob'
 
     - name: Archive Application
       run: |
-        zip -qq -r ./buildartifacts/Application.zip ./Application/build
+        zip -qq -r ./buildartifacts/Application.zip ./app_data
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
@@ -110,4 +110,4 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/app_data/jobs/continuous/rallywebjob'
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
