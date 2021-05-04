@@ -40,16 +40,11 @@ jobs:
         cd Application
         dotnet restore
         dotnet build --configuration Release
-        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/app_data/jobs/continuous/rallywebjob'
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build'
 
     - name: Archive Application
       run:
-        zip -qq -r ./buildartifacts/Application.zip ./Application
-        
-    - name: Archive app_data
-      run: |
-        cd Application
-        zip -qq -r ../buildartifacts/app_data.zip ./app_data
+        zip -qq -r ./buildartifacts/Application.zip ./Application/build
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
@@ -84,8 +79,9 @@ jobs:
 
     - name: Unzipping Build artifact
       run: |
-        unzip -qq ./buildartifacts/app_data.zip -d .
         unzip -qq ./buildartifacts/Application.zip -d .
+        cd Application
+        cp -R build ../app_data/jobs/continuous/rallywebjob
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
