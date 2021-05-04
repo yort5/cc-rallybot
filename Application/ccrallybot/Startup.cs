@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ccrallybot.Properties;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace aspnet_core_dotnet_core
+namespace ccrallybot
 {
     public class Startup
     {
@@ -29,6 +30,12 @@ namespace aspnet_core_dotnet_core
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddHttpClient();
+            services.AddHttpClient(AppConstants.RallyClient, client =>
+            {
+                client.BaseAddress = new Uri(@"https://api.rally.io/v1/creator_coins/");
             });
 
 
