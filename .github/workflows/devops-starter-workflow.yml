@@ -13,7 +13,7 @@ env:
   LOCATION: "South Central US"
   HOSTINGPLANNAME: "cc-rallybot-plan"
   APPINSIGHTLOCATION: "South Central US"
-  SKU: "F1 Free"
+  SKU: "B1 Basic"
 
 jobs:
   build:
@@ -44,7 +44,7 @@ jobs:
 
     - name: Archive Application
       run: |
-        zip -qq -r ./buildartifacts/Application.zip .
+        zip -qq -r ./buildartifacts/app_data.zip ./app_data
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
@@ -79,7 +79,7 @@ jobs:
 
     - name: Unzipping Build artifact
       run: |
-        unzip -qq ./buildartifacts/Application.zip -d .
+        unzip -qq ./buildartifacts/app_data.zip -d .
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
