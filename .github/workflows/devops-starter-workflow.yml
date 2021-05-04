@@ -49,6 +49,10 @@ jobs:
         name: buildartifacts
         path: buildartifacts
 
+    - name: Archive Application
+      run: |
+        zip -qq -r ./buildartifacts/Application.zip ./Application/build
+
     - name: Archive ArmTemplates
       run: |
         zip -qq -r ./deploymenttemplates/ArmTemplates.zip ./ArmTemplates
@@ -72,6 +76,10 @@ jobs:
       with:
         name: buildartifacts
         path: buildartifacts
+
+    - name: Unzipping Build artifact
+      run: |
+        unzip -qq ./buildartifacts/Application.zip -d .
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
