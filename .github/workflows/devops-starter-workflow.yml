@@ -90,7 +90,7 @@ jobs:
 
     - name: Unzipping ARM artifact
       run: |
-        unzip -qq ./deploymenttemplates/ArmTemplates.zip -d .
+        unzip -qq -o ./deploymenttemplates/ArmTemplates.zip -d .
 
     - name: Login to Azure
       uses: azure/login@v1
