@@ -40,7 +40,7 @@ jobs:
         cd Application
         dotnet restore
         dotnet build --configuration Release
-        dotnet publish -c Release -o '$(Build.ArtifactStagingDirectory)\App_Data\jobs\continuous\RallyWebJob'
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build'
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
