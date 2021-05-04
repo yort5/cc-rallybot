@@ -43,7 +43,8 @@ jobs:
         dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/app_data/jobs/continuous/rallywebjob'
 
     - name: Archive Application
-      run: |
+      run:
+        zip -qq -r ./buildartifacts/Application.zip .
         cd Application
         zip -qq -r ../buildartifacts/app_data.zip ./app_data
 
@@ -112,3 +113,8 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        
+    - name: Kick off the webjob with powershell
+      if: github.event.action == 'inline'
+      run: |
+        '"dotnet ccrallybot.dll" | Out-File run.cmd -Encoding ASCII; $LASTEXITCODE'
