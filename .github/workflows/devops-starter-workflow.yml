@@ -42,16 +42,16 @@ jobs:
         dotnet build --configuration Release
         dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build'
 
+    - name: Archive Application
+      run: |
+        zip -qq -r ./buildartifacts/Application.zip ./Application/build
+
     - name: Upload Application to Build Artifact
       continue-on-error: false
       uses: actions/upload-artifact@v2
       with:
         name: buildartifacts
         path: buildartifacts
-
-    - name: Archive Application
-      run: |
-        zip -qq -r ./buildartifacts/Application.zip ./Application/build
 
     - name: Archive ArmTemplates
       run: |
