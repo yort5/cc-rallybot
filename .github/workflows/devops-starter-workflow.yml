@@ -111,6 +111,11 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+      
+    - name: 'Copy code for webjob'
+      run: |
+        cd Application
+        cp -R build ../app_data/jobs/continuous/rallywebjob
         
     - name: Kick off the webjob with powershell
       if: github.event.action == 'inline'
