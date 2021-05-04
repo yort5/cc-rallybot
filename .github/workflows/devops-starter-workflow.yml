@@ -44,7 +44,7 @@ jobs:
 
     - name: Archive Application
       run:
-        zip -qq -r ./buildartifacts/Application.zip .
+        zip -qq -r ./buildartifacts/Application.zip ./Application
         cd Application
         zip -qq -r ../buildartifacts/app_data.zip ./app_data
 
