@@ -44,7 +44,8 @@ jobs:
 
     - name: Archive Application
       run: |
-        zip -qq -r ./buildartifacts/app_data.zip ./Application/app_data
+        cd Application
+        zip -qq -r ../buildartifacts/app_data.zip ./app_data
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
