@@ -40,16 +40,13 @@ jobs:
         cd Application
         dotnet restore
         dotnet build --configuration Release
-        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build'
-
-    - name: Archive Application
-      run:
-        zip -qq -r ./buildartifacts/Application.zip ./Application/build
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish/Application/build'
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish/App_Data/jobs/continuous/rallywebjob'
     
-    - name: Archive app_data
+    - name: Archive bundle
       run: |
-        cd Application/build
-        zip -qq -r ../../buildartifacts/app_data.zip *
+        cd publish
+        zip -qq -r ../buildartifacts/CCRally.zip *
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
@@ -84,7 +81,7 @@ jobs:
 
     - name: Unzipping Build artifact
       run: |
-        unzip -qq ./buildartifacts/Application.zip -d .
+        unzip -qq ./buildartifacts/CCRally.zip .
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
@@ -115,12 +112,7 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-      
-    - name: 'Unzip code for webjob'
-      run: |
-        mkdir -p app_data/jobs/continuous/rallywebjob
-        unzip -qq ./buildartifacts/app_data.zip -d app_data/jobs/continuous/rallywebjob/
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/app_data/jobs/continuous/rallywebjob/'
         
     - name: Kick off the webjob with powershell
       if: github.event.action == 'inline'
