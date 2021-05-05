@@ -119,5 +119,5 @@ jobs:
       with:
         inlineScript: |
           Start-AzureWebsiteJob -Name ${{ env.AZURE_WEBAPP_NAME }} -JobName rallywebjob -JobType Continuous
-        azPSVersion: '3.1.0'
+        azPSVersion: '4.0.0'
         
