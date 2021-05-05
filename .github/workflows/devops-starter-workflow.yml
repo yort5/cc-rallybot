@@ -45,6 +45,11 @@ jobs:
     - name: Archive Application
       run:
         zip -qq -r ./buildartifacts/Application.zip ./Application/build
+    
+    - name: Archive app_data
+      run: |
+        cd Application/build
+        zip -qq -r ../../buildartifacts/app_data.zip *
 
     - name: Upload Application to Build Artifact
       continue-on-error: false
@@ -112,11 +117,10 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
       
-    - name: 'Copy code for webjob'
+    - name: 'Unzip code for webjob'
       run: |
         mkdir -p app_data/jobs/continuous/rallywebjob
-        cd Application
-        cp -R build/* ../app_data/jobs/continuous/rallywebjob/
+        unzip -qq ./buildartifacts/app_data.zip -d app_data/jobs/continuous/rallywebjob/
         
     - name: Kick off the webjob with powershell
       if: github.event.action == 'inline'
