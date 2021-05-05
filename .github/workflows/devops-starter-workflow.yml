@@ -81,7 +81,7 @@ jobs:
 
     - name: Unzipping Build artifact
       run: |
-        unzip -qq ./buildartifacts/CCRally.zip .
+        unzip -qq ./buildartifacts/CCRally.zip
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
