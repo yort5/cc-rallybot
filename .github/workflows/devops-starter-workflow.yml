@@ -114,7 +114,10 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         
-    - name: Kick off the webjob with powershell
-      if: github.event.action == 'inline'
-      run: |
-        '"dotnet ccrallybot.dll" | Out-File run.cmd -Encoding ASCII; $LASTEXITCODE'
+    - name: Run Azure PowerShell script
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Start-AzureWebsiteJob -Name ${{ env.AZURE_WEBAPP_NAME }} -JobName rallywebjob -JobType Continuous
+        azPSVersion: '3.1.0'
+        
