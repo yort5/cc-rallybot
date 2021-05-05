@@ -40,8 +40,8 @@ jobs:
         cd Application
         dotnet restore
         dotnet build --configuration Release
-        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish/Application/build'
-        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish/App_Data/jobs/continuous/rallywebjob'
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/../publish/Application/build'
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/../publish/App_Data/jobs/continuous/rallywebjob'
     
     - name: Archive bundle
       run: |
