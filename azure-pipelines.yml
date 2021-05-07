@@ -45,7 +45,7 @@ steps:
     azureSubscription: 'Visual Studio Enterprise Subscription – MPN(a42da27c-dc48-4347-a7af-02afda3255cd)'
     appType: 'webApp'
     WebAppName: 'cc-rallybot'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)\'
     ScriptType: 'Inline Script'
     InlineScript: '"dotnet ccrallybot.dll" | Out-File run.cmd -Encoding ASCII; $LASTEXITCODE'
 
