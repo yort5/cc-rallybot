@@ -34,6 +34,10 @@ namespace ccrallybot
                     services.AddSingleton<IAppSettings, AppSettings>();
                     services.AddSingleton<GoogleSheetService>();
                     services.AddHttpClient();
+                    services.AddHttpClient(AppConstants.RallyClient, client =>
+                    {
+                        client.BaseAddress = new Uri(@"https://api.rally.io/v1/creator_coins/");
+                    });
                     //services.AddHostedService<DiscordWorker>();
                     services.AddHostedService<RallyTrackingWorker>();
                     //services.AddHostedService<TwitchBot>();

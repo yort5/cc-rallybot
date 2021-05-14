@@ -25,20 +25,7 @@ namespace ccrallybot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-            services.AddHttpClient();
-            services.AddHttpClient(AppConstants.RallyClient, client =>
-            {
-                client.BaseAddress = new Uri(@"https://api.rally.io/v1/creator_coins/");
-            });
-
-
+            // Only required if the service uses Razor Pages.
             services.AddRazorPages();
         }
 
@@ -55,9 +42,7 @@ namespace ccrallybot
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseRouting();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
