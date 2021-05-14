@@ -1,0 +1,1 @@
+dotnet ccrallybot.dll %*
