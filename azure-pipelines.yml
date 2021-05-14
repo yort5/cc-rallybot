@@ -42,10 +42,13 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'cc-rallybot - Azure'
-    appType: 'webAppLinux'
+    azureSubscription: 'Visual Studio Enterprise Subscription – MPN(a42da27c-dc48-4347-a7af-02afda3255cd)'
+    appType: 'webApp'
     WebAppName: 'cc-rallybot'
     packageForLinux: '$(Build.ArtifactStagingDirectory)\'
+    ScriptType: 'Inline Script'
+    InlineScript: '"dotnet ccrallybot.dll" | Out-File run.cmd -Encoding ASCII; $LASTEXITCODE'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
