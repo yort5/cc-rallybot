@@ -32,7 +32,7 @@ namespace ccrallybot.Properties
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _settings = appSettings ?? throw new ArgumentNullException(nameof(appSettings));
             _sheetService = gSheetService;
-            _httpClient = httpClientFactory.CreateClient(AppConstants.RallyClient);
+            _httpClient = httpClientFactory.CreateClient(AppConstants.RallyHttpClient);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

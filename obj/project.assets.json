@@ -4234,11 +4234,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Troy\\repos\\Personal\\ccrallybot\\ccrallybot.csproj",
+      "projectUniqueName": "C:\\Users\\Troy\\repos\\Personal\\cc-rallybot\\ccrallybot.csproj",
       "projectName": "ccrallybot",
-      "projectPath": "C:\\Users\\Troy\\repos\\Personal\\ccrallybot\\ccrallybot.csproj",
+      "projectPath": "C:\\Users\\Troy\\repos\\Personal\\cc-rallybot\\ccrallybot.csproj",
       "packagesPath": "C:\\Users\\Troy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Troy\\repos\\Personal\\ccrallybot\\obj\\",
+      "outputPath": "C:\\Users\\Troy\\repos\\Personal\\cc-rallybot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

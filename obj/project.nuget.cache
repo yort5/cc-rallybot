@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X4zCtkiLPP+fn30jB/GYHLxojPrFwE4+2+c13wsMctWSmhDJd/pBZpnEV9oRelDuoirwKErkkkNRk9nBXvZ5VA==",
+  "dgSpecHash": "8Pw4WJ9mhnvaE83M+YeCplx7medgdnaeCetO0LG7c/jYlDtbUGfHZK0DDeINeaEXuQk5QK+xLpbCDqQPVWraKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Troy\\repos\\Personal\\ccrallybot\\ccrallybot.csproj",
+  "projectFilePath": "C:\\Users\\Troy\\repos\\Personal\\cc-rallybot\\ccrallybot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Troy\\.nuget\\packages\\azure.core\\1.0.1\\azure.core.1.0.1.nupkg.sha512",
     "C:\\Users\\Troy\\.nuget\\packages\\azure.data.appconfiguration\\1.0.0\\azure.data.appconfiguration.1.0.0.nupkg.sha512",
