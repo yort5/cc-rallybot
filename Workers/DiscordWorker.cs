@@ -96,7 +96,7 @@ namespace ccrallybot.Services
                         _logger.LogError($"Exception trying to update nickname: {exc.Message}");
                     }
 
-                    await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+                    await Task.Delay(TimeSpan.FromMinutes(10), stoppingToken);
                 }
             }
             catch (Exception exc)
